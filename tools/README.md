@@ -1,12 +1,16 @@
 # Werkzeuge
 
-Diese drei Helfer sind entstanden, weil das Projekt in der Umgebung, in der es
+Diese Helfer sind entstanden, weil das Projekt in der Umgebung, in der es
 geschrieben wurde, **nicht gebaut werden konnte**: `dl.google.com` und
 `maven.google.com` sind dort per Netzwerk-Policy gesperrt, und Maven Central
 führt weder das Android Gradle Plugin noch AndroidX-Artefakte.
 
-Sie ersetzen keinen Compiler. Sie fangen aber genau die Fehlerklassen, die
-sonst erst beim ersten Build auffallen.
+Sie ersetzen keinen Compiler. Sie fangen aber einen Teil der Fehlerklassen,
+die sonst erst beim ersten Build auffallen — und haben das auch schon getan:
+der erste echte Build (auf GitHub Actions, siehe `.github/workflows/build-apk.yml`)
+scheiterte an einer ungültigen `Modifier.padding(...)`-Kombination, die weder
+der Parser noch der Referenzabgleich sehen konnten. Seitdem gibt es
+`padding_pruefen.py`.
 
 ## SyntaxCheck.java
 
@@ -52,6 +56,18 @@ python3 ungenutzte_importe.py --fix    # entfernen
 **Vorsicht mit `--fix`:** `getValue` und `setValue` werden für
 `by mutableStateOf(...)` gebraucht, tauchen im Text aber nie auf. Diese
 Meldungen sind falsch positiv und müssen stehen bleiben.
+
+## padding_pruefen.py
+
+Findet ungültige `Modifier.padding(...)`-Kombinationen. Compose kennt vier
+Überladungen: `padding(all)`, `padding(horizontal, vertical)`,
+`padding(start, top, end, bottom)`, `padding(paddingValues)`. `start`/`end`
+lassen sich also nicht mit `horizontal`/`vertical` mischen — ein Typfehler,
+den nur der Compiler sieht, kein Parser.
+
+```sh
+python3 padding_pruefen.py
+```
 
 ## Sobald ein echter Build möglich ist
 

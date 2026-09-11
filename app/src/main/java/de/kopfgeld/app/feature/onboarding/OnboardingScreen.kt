@@ -221,7 +221,7 @@ private fun ColumnScope.SeiteFaecher(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(start = Mass.Seitenrand, end = Mass.Seitenrand, vertical = 6.dp),
+                    .padding(start = Mass.Seitenrand, end = Mass.Seitenrand, top = 6.dp, bottom = 6.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 SubjectBadge(fach)
