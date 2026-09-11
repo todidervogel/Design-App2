@@ -17,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.data.FakeData
 import de.kopfgeld.app.data.Zyklus
@@ -151,7 +153,7 @@ fun Dauerbalken(
             .fillMaxWidth()
             .height(10.dp)
             .drawBehind {
-                val radius = androidx.compose.ui.geometry.CornerRadius(3.dp.toPx())
+                val radius = CornerRadius(3.dp.toPx())
                 val grenze = size.width * anteilLernen
                 drawRoundRect(
                     color = stifte.tinte.copy(alpha = 0.22f * deckkraft),
@@ -162,7 +164,7 @@ fun Dauerbalken(
                     drawRoundRect(
                         color = stifte.tinte.copy(alpha = deckkraft),
                         topLeft = Offset(grenze, 0f),
-                        size = androidx.compose.ui.geometry.Size(size.width - grenze, size.height),
+                        size = Size(size.width - grenze, size.height),
                         cornerRadius = radius,
                     )
                 }

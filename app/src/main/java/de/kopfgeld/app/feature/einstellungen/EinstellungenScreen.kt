@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import de.kopfgeld.app.data.Berechtigung
 import de.kopfgeld.app.data.FakeData
 import de.kopfgeld.app.data.Verbindungstest
@@ -181,11 +182,11 @@ private fun EinstellungsZeile(
     wert: String,
     beiKlick: () -> Unit,
     nebentext: String? = null,
-    nebenfarbe: androidx.compose.ui.graphics.Color =
-        androidx.compose.ui.graphics.Color.Unspecified,
+    nebenfarbe: Color =
+        Color.Unspecified,
 ) {
     val stifte = KopfgeldTheme.stifte
-    val ton = if (nebenfarbe == androidx.compose.ui.graphics.Color.Unspecified) {
+    val ton = if (nebenfarbe == Color.Unspecified) {
         stifte.blei
     } else {
         nebenfarbe

@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.data.AppEintrag
@@ -34,10 +35,10 @@ import de.kopfgeld.app.ui.components.PrimaerButton
 import de.kopfgeld.app.ui.components.TafelScaffold
 import de.kopfgeld.app.ui.components.TextAktion
 import de.kopfgeld.app.ui.components.Trennlinie
-import de.kopfgeld.app.ui.theme.Kreide
-import de.kopfgeld.app.ui.theme.KreideMatt
 import de.kopfgeld.app.ui.theme.KopfgeldTheme
 import de.kopfgeld.app.ui.theme.KorrekturTafel
+import de.kopfgeld.app.ui.theme.Kreide
+import de.kopfgeld.app.ui.theme.KreideMatt
 import de.kopfgeld.app.ui.theme.Mass
 import de.kopfgeld.app.ui.theme.Radius
 
@@ -180,7 +181,7 @@ fun SessionEndeScreen(
 private fun Bilanzzeile(
     beschriftung: String,
     wert: String,
-    farbe: androidx.compose.ui.graphics.Color,
+    farbe: Color,
 ) {
     Row(
         Modifier

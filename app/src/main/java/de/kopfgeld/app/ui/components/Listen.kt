@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,8 +22,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.data.Aufgabe
 import de.kopfgeld.app.data.Aufgabenstand
@@ -60,7 +63,7 @@ fun Kaestchen(
                     drawRect(
                         color = if (angehakt) ton else zart(ton),
                         size = Size(size.width, size.height),
-                        style = androidx.compose.ui.graphics.drawscope.Stroke(width = strich),
+                        style = Stroke(width = strich),
                     )
                     if (angehakt) {
                         drawLine(
@@ -247,7 +250,7 @@ fun TaskRow(
 fun ScanThumb(
     scan: Scan,
     modifier: Modifier = Modifier,
-    breite: androidx.compose.ui.unit.Dp = 64.dp,
+    breite: Dp = 64.dp,
     beiKlick: (() -> Unit)? = null,
 ) {
     val stifte = KopfgeldTheme.stifte
@@ -278,7 +281,7 @@ fun ScanThumb(
             Box(
                 Modifier
                     .size(6.dp)
-                    .background(statusfarbe, androidx.compose.foundation.shape.CircleShape),
+                    .background(statusfarbe, CircleShape),
             )
             LuftBreit(5.dp)
             Text(

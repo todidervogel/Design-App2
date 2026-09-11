@@ -2,6 +2,8 @@ package de.kopfgeld.app.feature.session
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,10 +37,10 @@ import de.kopfgeld.app.ui.components.PrimaerButton
 import de.kopfgeld.app.ui.components.SymbolBox
 import de.kopfgeld.app.ui.components.TafelScaffold
 import de.kopfgeld.app.ui.components.ZweitButton
-import de.kopfgeld.app.ui.theme.Kreide
-import de.kopfgeld.app.ui.theme.KreideMatt
 import de.kopfgeld.app.ui.theme.KopfgeldTheme
 import de.kopfgeld.app.ui.theme.KorrekturTafel
+import de.kopfgeld.app.ui.theme.Kreide
+import de.kopfgeld.app.ui.theme.KreideMatt
 import de.kopfgeld.app.ui.theme.Mass
 import de.kopfgeld.app.ui.theme.Radius
 import de.kopfgeld.app.ui.theme.TafelTheme
@@ -152,9 +155,9 @@ private fun Suchpunkte(modifier: Modifier = Modifier) {
             LaunchedEffect(index) {
                 leuchten.animateTo(
                     targetValue = 0.9f,
-                    animationSpec = androidx.compose.animation.core.infiniteRepeatable(
+                    animationSpec = infiniteRepeatable(
                         animation = tween(700, delayMillis = index * 160),
-                        repeatMode = androidx.compose.animation.core.RepeatMode.Reverse,
+                        repeatMode = RepeatMode.Reverse,
                     ),
                 )
             }
@@ -163,7 +166,7 @@ private fun Suchpunkte(modifier: Modifier = Modifier) {
                     .size(6.dp)
                     .background(
                         Kreide.copy(alpha = leuchten.value),
-                        androidx.compose.foundation.shape.CircleShape,
+                        CircleShape,
                     ),
             )
         }

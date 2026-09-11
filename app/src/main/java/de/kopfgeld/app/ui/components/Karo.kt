@@ -3,6 +3,7 @@ package de.kopfgeld.app.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -52,7 +53,7 @@ fun KaroBackground(
     inhalt: @Composable BoxScope.() -> Unit,
 ) {
     val grund = if (grundfarbe == Color.Unspecified) {
-        androidx.compose.material3.MaterialTheme.colorScheme.background
+        MaterialTheme.colorScheme.background
     } else {
         grundfarbe
     }

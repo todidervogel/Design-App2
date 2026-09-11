@@ -16,10 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.ui.theme.KopfgeldTheme
-import kotlinx.coroutines.launch
 import kotlin.math.abs
+import kotlinx.coroutines.launch
 
 /**
  * Wischen zum Loeschen, DESIGN.md 7.4.
@@ -60,7 +61,7 @@ fun WischZumLoeschen(
 
         Box(
             Modifier
-                .offset { androidx.compose.ui.unit.IntOffset(versatz.value.toInt(), 0) }
+                .offset { IntOffset(versatz.value.toInt(), 0) }
                 .then(
                     if (aktiv) {
                         Modifier.pointerInput(Unit) {

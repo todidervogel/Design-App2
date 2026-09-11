@@ -3,14 +3,17 @@ package de.kopfgeld.app.ui.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
@@ -174,7 +177,7 @@ fun BoxOverlay(
 }
 
 @Composable
-private fun androidx.compose.foundation.layout.BoxScope.Ziehpunkt(
+private fun BoxScope.Ziehpunkt(
     ausrichtung: Alignment,
     beiZug: (Dp, Dp) -> Unit,
 ) {
@@ -193,7 +196,7 @@ private fun androidx.compose.foundation.layout.BoxScope.Ziehpunkt(
         Box(
             Modifier
                 .size(12.dp)
-                .background(Kreide, androidx.compose.foundation.shape.CircleShape),
+                .background(Kreide, CircleShape),
         )
     }
 }
@@ -220,7 +223,7 @@ fun KameraPlatzhalter(modifier: Modifier = Modifier) {
                 drawRect(
                     color = Color(0xFF221C17),
                     topLeft = Offset(0f, size.height * 0.58f),
-                    size = androidx.compose.ui.geometry.Size(size.width, size.height * 0.42f),
+                    size = Size(size.width, size.height * 0.42f),
                 )
                 drawLine(
                     Color(0xFF3A3129),

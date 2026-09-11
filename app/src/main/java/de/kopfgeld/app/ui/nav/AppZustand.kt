@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.Dp
 import de.kopfgeld.app.data.Aufgabenquelle
 import de.kopfgeld.app.data.Aufgabenstand
 import de.kopfgeld.app.data.FakeData
@@ -331,22 +332,22 @@ class AppZustand {
 
     // --- Box ---------------------------------------------------------------
 
-    fun boxVerschieben(dx: androidx.compose.ui.unit.Dp, dy: androidx.compose.ui.unit.Dp) {
+    fun boxVerschieben(dx: Dp, dy: Dp) {
         boxAufstellen = boxAufstellen.copy(
             versatzX = boxAufstellen.versatzX + dx,
             versatzY = boxAufstellen.versatzY + dy,
         )
     }
 
-    fun boxGroesse(dx: androidx.compose.ui.unit.Dp, dy: androidx.compose.ui.unit.Dp) {
+    fun boxGroesse(dx: Dp, dy: Dp) {
         boxAufstellen = boxAufstellen.copy(
             boxBreite = (boxAufstellen.boxBreite + dx).coerceIn(
-                androidx.compose.ui.unit.Dp(90f),
-                androidx.compose.ui.unit.Dp(320f),
+                Dp(90f),
+                Dp(320f),
             ),
             boxHoehe = (boxAufstellen.boxHoehe + dy).coerceIn(
-                androidx.compose.ui.unit.Dp(70f),
-                androidx.compose.ui.unit.Dp(320f),
+                Dp(70f),
+                Dp(320f),
             ),
         )
     }

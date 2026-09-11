@@ -14,6 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -162,7 +164,7 @@ private fun MiniKreis(
     Canvas(Modifier.size(12.dp)) {
         val staerke = 2.dp.toPx()
         val einzug = staerke / 2f
-        val kante = androidx.compose.ui.geometry.Size(
+        val kante = Size(
             size.width - staerke,
             size.height - staerke,
         )
@@ -171,7 +173,7 @@ private fun MiniKreis(
             startAngle = -90f,
             sweepAngle = 360f,
             useCenter = false,
-            topLeft = androidx.compose.ui.geometry.Offset(einzug, einzug),
+            topLeft = Offset(einzug, einzug),
             size = kante,
             style = Stroke(width = staerke, cap = StrokeCap.Round),
         )
@@ -180,7 +182,7 @@ private fun MiniKreis(
             startAngle = -90f,
             sweepAngle = 360f * anteil,
             useCenter = false,
-            topLeft = androidx.compose.ui.geometry.Offset(einzug, einzug),
+            topLeft = Offset(einzug, einzug),
             size = kante,
             style = Stroke(width = staerke, cap = StrokeCap.Round),
         )

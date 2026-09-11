@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.ui.theme.KopfgeldTheme
 import de.kopfgeld.app.ui.theme.Mass
@@ -416,12 +417,12 @@ fun MerkChip(
 
 /** Abstand in Hoehe des Grundrasters. */
 @Composable
-fun Luft(hoehe: androidx.compose.ui.unit.Dp) {
+fun Luft(hoehe: Dp) {
     Spacer(Modifier.height(hoehe))
 }
 
 /** Waagerechter Abstand. */
 @Composable
-fun LuftBreit(breite: androidx.compose.ui.unit.Dp) {
+fun LuftBreit(breite: Dp) {
     Spacer(Modifier.width(breite))
 }

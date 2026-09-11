@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import de.kopfgeld.app.data.FakeData
 import de.kopfgeld.app.data.Sessionplan
@@ -313,7 +314,7 @@ fun SessionPlanenScreen(
 private fun Modifier.ziehgriffVerschieben(
     index: Int,
     anzahl: Int,
-    dichte: androidx.compose.ui.unit.Density,
+    dichte: Density,
     beiVerschieben: (Int, Int) -> Unit,
 ): Modifier = this.pointerInput(index, anzahl) {
     var gesammelt = 0f
