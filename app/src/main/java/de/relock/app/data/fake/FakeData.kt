@@ -349,7 +349,7 @@ object FakeData {
     val woche = listOf(
         Tagesbilanz("Mo", 65, 48),
         Tagesbilanz("Di", 40, 72),
-        Tagesbilanz("Mi", 0, 95),
+        Tagesbilanz("Mi", 0, 75),
         Tagesbilanz("Do", 95, 30),
         Tagesbilanz("Fr", 55, 25),
         Tagesbilanz("Sa", 125, 0),
