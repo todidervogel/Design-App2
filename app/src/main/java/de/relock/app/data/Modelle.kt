@@ -128,10 +128,15 @@ data class Zyklus(
     val fachId: String,
     /** Thema oder Aufgabentitel, je nach Typ. */
     val thema: String,
-    val minuten: Int,
+    /** Zeit mit Buch und Heft, vor den Aufgaben. Darf 0 sein. */
+    val lernMinuten: Int,
+    /** Zeit mit den Aufgaben, in der Box. */
+    val aufgabenMinuten: Int,
     /** Nur bei Typ Aufgaben belegt. */
     val aufgabenAnzahl: Int = 0,
-)
+) {
+    val minuten: Int get() = lernMinuten + aufgabenMinuten
+}
 
 data class Sessionplan(
     val zyklen: List<Zyklus>,

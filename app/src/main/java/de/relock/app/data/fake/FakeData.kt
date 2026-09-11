@@ -161,9 +161,9 @@ object FakeData {
      */
     val sessionplan = Sessionplan(
         zyklen = listOf(
-            Zyklus("z1", Zyklustyp.Hausaufgabe, "m", "Buch S. 84, Nr. 3a–d", 20),
-            Zyklus("z2", Zyklustyp.Blurting, "e", "Present Perfect", 15),
-            Zyklus("z3", Zyklustyp.Aufgaben, "m", "Bruchrechnung", 20, aufgabenAnzahl = 6),
+            Zyklus("z1", Zyklustyp.Hausaufgabe, "m", "Buch S. 84, Nr. 3a–d", 0, 20),
+            Zyklus("z2", Zyklustyp.Blurting, "e", "Present Perfect", 10, 5),
+            Zyklus("z3", Zyklustyp.Aufgaben, "m", "Bruchrechnung", 0, 20, aufgabenAnzahl = 6),
         ),
         pauseVonMinuten = 5,
         pauseBisMinuten = 5,
@@ -178,7 +178,8 @@ object FakeData {
                     typ = Zyklustyp.Hausaufgabe,
                     fachId = hausaufgabe.fachId,
                     thema = hausaufgabe.aufgabe,
-                    minuten = 20,
+                    lernMinuten = 0,
+                    aufgabenMinuten = 20,
                 )
             },
         )
