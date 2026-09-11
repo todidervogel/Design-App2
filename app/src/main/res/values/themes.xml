@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--
-      Heft-Look. Nur das Fenster selbst, alles weitere macht Compose.
-      Kein ActionBar, damit der Compose-Screen die volle Flaeche hat.
+      Relock hat in Version 1 nur ein einziges dunkles Theme.
+      Das Fenster ist deshalb immer Nacht, unabhaengig vom Systemtheme.
     -->
-    <style name="Theme.Kopfgeld" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@color/papier</item>
-        <item name="android:statusBarColor">@color/papier</item>
-        <item name="android:navigationBarColor">@color/papier</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+    <style name="Theme.Relock" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/nacht</item>
+        <item name="android:statusBarColor">@color/nacht</item>
+        <item name="android:navigationBarColor">@color/nacht</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 </resources>

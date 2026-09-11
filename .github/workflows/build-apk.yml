@@ -1,11 +1,13 @@
 name: APK bauen
 
-# Baut die App zu einer einzigen installierbaren APK zusammen.
+# Baut Relock zu einer installierbaren APK zusammen.
 #
-# Das ist noetig, weil die Sandbox, in der der Code geschrieben wurde, keinen
-# Zugriff auf dl.google.com / maven.google.com hatte (siehe Design-App2/README.md
-# und Brain2/04-Architektur/Bekannte-Grenzen.md) - hier auf den GitHub-Runnern
-# ist das Netz offen, hier kann also zum ersten Mal echt gebaut werden.
+# Nötig, weil die Umgebung, in der der Code geschrieben wird, keinen Zugriff
+# auf dl.google.com / maven.google.com hat (siehe README.md). Hier auf den
+# GitHub-Runnern ist das Netz offen.
+#
+# Lokal wird vorher mit tools/typpruefen.sh gegen Compose Multiplatform
+# typgeprüft — das fängt Typ- und Überladungsfehler schon vor dem Push.
 
 on:
   push:
@@ -17,6 +19,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: apk-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -47,7 +53,7 @@ jobs:
       - name: APK als Artefakt hochladen
         uses: actions/upload-artifact@v4
         with:
-          name: kopfgeld-debug-apk
+          name: relock-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 30

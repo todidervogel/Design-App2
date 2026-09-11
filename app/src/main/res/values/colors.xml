@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Spiegelt ui/theme/Color.kt. Nur fuer Fenster- und Systemleisten. -->
-    <color name="papier">#FFF6F8F7</color>
-    <color name="tafel">#FF1F2B27</color>
-    <color name="tinte">#FF1D3A9E</color>
+    <!-- Spiegelt ui/theme/Color.kt. Nur fuer Fenster und Systemleisten. -->
+    <color name="nacht">#FF0E1320</color>
+    <color name="messing">#FFC9A35B</color>
 </resources>

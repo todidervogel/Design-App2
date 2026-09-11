@@ -5,16 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "de.kopfgeld.app"
+    namespace = "de.relock.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "de.kopfgeld.app"
-        // Zielgeraet ist ein Galaxy S9 mit Android 9.
+        applicationId = "de.relock.app"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
-        versionName = "0.1-ui"
+        versionName = "1.0.0"
 
         vectorDrawables { useSupportLibrary = true }
     }
@@ -62,9 +61,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.text.google.fonts)
     implementation(libs.androidx.compose.material3)
-    // Nur der Kern-Iconsatz. Alles Eigene zeichnet ui/components/Symbole.kt.
-    implementation(libs.androidx.compose.material.icons.core)
-    implementation(libs.androidx.navigation.compose)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

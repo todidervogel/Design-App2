@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Tafel-Look fuer das Systemtheme "dunkel". -->
-    <style name="Theme.Kopfgeld" parent="android:Theme.Material.NoActionBar">
-        <item name="android:windowBackground">@color/tafel</item>
-        <item name="android:statusBarColor">@color/tafel</item>
-        <item name="android:navigationBarColor">@color/tafel</item>
+    <!--
+      Relock hat in Version 1 nur ein einziges dunkles Theme.
+      Das Fenster ist deshalb immer Nacht, unabhaengig vom Systemtheme.
+    -->
+    <style name="Theme.Relock" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/nacht</item>
+        <item name="android:statusBarColor">@color/nacht</item>
+        <item name="android:navigationBarColor">@color/nacht</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
     </style>

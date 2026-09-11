@@ -1,4 +1,3 @@
-// Wurzelprojekt. Die Plugins werden hier nur deklariert, angewendet wird in :app.
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false

@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Kopfgeld"
+rootProject.name = "Relock"
 include(":app")
