@@ -59,7 +59,7 @@ fun HeftScaffold(
     scrollbar: Boolean = true,
     karo: Boolean = false,
     aufTitelLangGedrueckt: (() -> Unit)? = null,
-    aktion: @Composable (RowScope.() -> Unit)? = null,
+    aktion: @Composable RowScope.() -> Unit = {},
     fussleiste: @Composable (() -> Unit)? = null,
     inhalt: @Composable ColumnScope.() -> Unit,
 ) {
@@ -116,7 +116,7 @@ private fun Kopfzeile(
     zurueck: (() -> Unit)?,
     karo: Boolean,
     aufTitelLangGedrueckt: (() -> Unit)?,
-    aktion: @Composable (RowScope.() -> Unit)?,
+    aktion: @Composable RowScope.() -> Unit,
 ) {
     val kopfModifier = Modifier
         .fillMaxWidth()
@@ -166,7 +166,7 @@ private fun Kopfzeile(
                         },
                     ),
             )
-            if (aktion != null) aktion()
+            aktion()
         }
         if (unterzeile != null) {
             Spacer(Modifier.height(2.dp))

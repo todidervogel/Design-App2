@@ -38,7 +38,11 @@ fun CycleBlock(
     ausgegraut: Boolean = false,
     ausgegrautHinweis: String? = null,
     beiKlick: () -> Unit = {},
-    beiZiehgriff: () -> Unit = {},
+    /**
+     * Liegt nur auf dem Ziehgriff rechts, nicht auf dem ganzen Block.
+     * Sonst wuerde die Sortiergeste das Wischen zum Loeschen schlucken.
+     */
+    ziehgriffModifier: Modifier = Modifier,
 ) {
     val stifte = KopfgeldTheme.stifte
     val fach = FakeData.fach(zyklus.fachId)
@@ -72,7 +76,7 @@ fun CycleBlock(
             Box(
                 Modifier
                     .size(Mass.Tippziel)
-                    .clickable(onClick = beiZiehgriff),
+                    .then(ziehgriffModifier),
                 contentAlignment = Alignment.Center,
             ) {
                 SymbolZiehgriff()

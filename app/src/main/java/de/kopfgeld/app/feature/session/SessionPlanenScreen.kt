@@ -2,16 +2,20 @@ package de.kopfgeld.app.feature.session
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Snackbar
@@ -103,12 +107,24 @@ fun SessionPlanenScreen(
                 Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = Mass.Seitenrand,
+                        start = Mass.Seitenrand - 12.dp,
                         end = Mass.Seitenrand,
                         top = Mass.Mittel,
                     ),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
+                Box(
+                    Modifier
+                        .size(Mass.Tippziel)
+                        .clickable(onClick = beiZurueck),
+                    contentAlignment = Alignment.CenterStart,
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Zurück",
+                        tint = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
                 Column(Modifier.weight(1f)) {
                     Text(
                         text = state.plan.name,
@@ -185,8 +201,7 @@ fun SessionPlanenScreen(
                             ausgegrautHinweis = "In der Testphase ausgegraut: " +
                                 "jetzt nur noch testen.",
                             beiKlick = { beiZyklusBearbeiten(zyklus) },
-                            beiZiehgriff = {},
-                            modifier = Modifier.ziehgriffVerschieben(
+                            ziehgriffModifier = Modifier.ziehgriffVerschieben(
                                 index = index,
                                 anzahl = state.plan.zyklen.size,
                                 dichte = dichte,
@@ -303,11 +318,12 @@ private fun Modifier.ziehgriffVerschieben(
 ): Modifier = this.pointerInput(index, anzahl) {
     var gesammelt = 0f
     val blockhoehe = with(dichte) { 118.dp.toPx() }
-    detectDragGestures(
+    // Nur senkrecht, damit das waagerechte Wischen zum Loeschen frei bleibt.
+    detectVerticalDragGestures(
         onDragEnd = { gesammelt = 0f },
         onDragCancel = { gesammelt = 0f },
     ) { _, verschiebung ->
-        gesammelt += verschiebung.y
+        gesammelt += verschiebung
         if (gesammelt > blockhoehe && index < anzahl - 1) {
             beiVerschieben(index, index + 1)
             gesammelt = 0f
