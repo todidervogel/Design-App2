@@ -1,0 +1,65 @@
+name: APK bauen
+
+# Baut die App zu einer einzigen installierbaren APK zusammen.
+#
+# Das ist noetig, weil die Sandbox, in der der Code geschrieben wurde, keinen
+# Zugriff auf dl.google.com / maven.google.com hatte (siehe Design-App2/README.md
+# und Brain2/04-Architektur/Bekannte-Grenzen.md) - hier auf den GitHub-Runnern
+# ist das Netz offen, hier kann also zum ersten Mal echt gebaut werden.
+
+on:
+  push:
+    branches:
+      - claude/kopfgeld-app-ui-design-wrhlc3
+      - main
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Debug-APK bauen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: JDK 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Gradle cachen
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Android SDK einrichten
+        uses: android-actions/setup-android@v3
+
+      - name: gradlew ausfuehrbar machen
+        run: chmod +x ./gradlew
+
+      - name: Debug-APK bauen
+        run: ./gradlew :app:assembleDebug --stacktrace
+
+      - name: APK als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: kopfgeld-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Lint (nur melden, nicht scheitern lassen)
+        if: always()
+        run: ./gradlew :app:lintDebug --stacktrace || true
+
+      - name: Lint-Bericht hochladen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-bericht
+          path: app/build/reports/lint-results-debug.html
+          if-no-files-found: ignore
