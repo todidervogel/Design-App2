@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tafel-Look fuer das Systemtheme "dunkel". -->
+    <style name="Theme.Kopfgeld" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/tafel</item>
+        <item name="android:statusBarColor">@color/tafel</item>
+        <item name="android:navigationBarColor">@color/tafel</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>
