@@ -3,21 +3,18 @@ package de.relock.app.ui.theme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.relock.app.data.Kartenstufe
 
-/**
- * Die fuenf Kartenstufen, DESIGN.md 2.2.
+/*
+ * Die fuenf Kartenmaterialien, DESIGN.md 2.2.
  *
  * Jede Stufe ist ein Metall: ein linearer Verlauf aus drei Farbstopps im
  * Winkel 115 Grad, darueber feine Buerstung (waagerechte Linien, 3 Prozent)
  * und ein Glanzstreifen. Gezeichnet wird das in ui/components/RelockCard.kt.
+ *
+ * Die Stufe selbst ist ein Begriff der Domaene und liegt in data/Modelle.kt.
+ * Hier steht nur, wie sie aussieht.
  */
-enum class Kartenstufe(val anzeige: String) {
-    Graphit("Graphit"),
-    Bronze("Bronze"),
-    Silber("Silber"),
-    Gold("Gold"),
-    Obsidian("Obsidian"),
-}
 
 /**
  * @param verlauf drei Farbstopps, dunkel - hell - dunkel
